@@ -1,0 +1,20 @@
+# Archivos de build y directorios
+/build/
+/target/
+*.class
+
+# Archivos de configuración privada de NetBeans
+/nbproject/private/
+
+# Archivos de empaquetado
+*.jar
+*.war
+*.zip
+*.tar.gz
+
+# Archivos de configuración y herramientas
+.classpath
+.project
+.settings/
+.idea/
+*.iml
