@@ -10,6 +10,9 @@ public class CCliente {
     private String direccion;
     private String email;
 
+    public CCliente() {
+    }
+
     public CCliente(int id, String dni, String nombres, String telefono, String direccion, String email) {
         this.id = id;
         this.dni = dni;
