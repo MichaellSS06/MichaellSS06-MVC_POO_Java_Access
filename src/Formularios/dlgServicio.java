@@ -3,42 +3,45 @@ package Formularios;
 
 import Clases.*;
 import DAO.*;
-
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class dlgMarca extends javax.swing.JDialog {
+public class dlgServicio extends javax.swing.JDialog {
     
-    // Variables 
-    DefaultTableModel tbmMarcas;
-    DAOMarca marca = new DAOMarca();
+     // Variables
+    DAOServicio servicio_dao = new DAOServicio();
+    DAOMarca marca_dao = new DAOMarca();
+    DefaultTableModel tbmProductos;
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(dlgMarca.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(dlgServicio.class.getName());
 
     /**
-     * Creates new form dlgMarca
+     * Creates new form dlgServicio
      */
-    public dlgMarca(java.awt.Frame parent, boolean modal) {
+    public dlgServicio(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-         // Listar las marcas
-        cargarMarcas();
+         //
+        cargarProductos();
+        
     }
     
-    public void cargarMarcas(){               
-        List<CMarca> listaMarcas = marca.listaMarcas();
-        tbmMarcas = (DefaultTableModel)tabMarcas.getModel();
-        Object[] ob = new Object[5];
-        for (int i = 0; i < listaMarcas.size(); i++) {
-            ob[0] = listaMarcas.get(i).getId();
-            ob[1] = listaMarcas.get(i).getMarca();
-            ob[2] = listaMarcas.get(i).getModelo();
-            ob[3] = listaMarcas.get(i).getAño();
-            ob[4] = listaMarcas.get(i).getKilometraje();
-            tbmMarcas.addRow(ob);
+    public void cargarProductos(){
+                
+        List<CServicio> listaServicios = servicio_dao.listaServicios();
+        tbmProductos = (DefaultTableModel)tabServicio.getModel();
+        Object[] ob = new Object[6];
+        for (int i = 0; i < listaServicios.size(); i++) {
+            ob[0] = listaServicios.get(i).getId();
+            ob[1] = listaServicios.get(i).getNombre();
+            ob[2] = listaServicios.get(i).getMarca().getMarca();
+            ob[3] = listaServicios.get(i).getPrecio();
+            ob[4] = listaServicios.get(i).getStock();
+            ob[5] = listaServicios.get(i).isActivo();
+            tbmProductos.addRow(ob);
         }        
-        tabMarcas.setModel(tbmMarcas);
+        tabServicio.setModel(tbmProductos);
     }
 
     /**
@@ -51,28 +54,27 @@ public class dlgMarca extends javax.swing.JDialog {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabMarcas = new javax.swing.JTable();
+        tabServicio = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Lista de Marcas");
 
-        tabMarcas.setModel(new javax.swing.table.DefaultTableModel(
+        tabServicio.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "MARCA", "MODELO", "AÑO", "KILOMETRAJE"
+                "ID", "SERVICIO", "MARCA", "PRECIO", "STOCK", "ACTIVO"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tabMarcas);
+        jScrollPane1.setViewportView(tabServicio);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -119,7 +121,7 @@ public class dlgMarca extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                dlgMarca dialog = new dlgMarca(new javax.swing.JFrame(), true);
+                dlgServicio dialog = new dlgServicio(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -133,6 +135,6 @@ public class dlgMarca extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tabMarcas;
+    private javax.swing.JTable tabServicio;
     // End of variables declaration//GEN-END:variables
 }

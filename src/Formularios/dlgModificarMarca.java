@@ -68,15 +68,20 @@ public class dlgModificarMarca extends javax.swing.JDialog {
 
         tabMarca.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "MARCA", "MODELO", "AÑO", "KILOMETRAJE"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tabMarca.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tabMarcaMouseClicked(evt);
@@ -199,14 +204,18 @@ public class dlgModificarMarca extends javax.swing.JDialog {
         {
             Integer id = Integer.parseInt(txtId.getText());
             String marca = txtMarca.getText();
-            String pais = cbxPais.getSelectedItem().toString();
-            if ((nombre.length()>0) && (pais.length()>0)){
-                if (marca_dao.modificarMarca(new CMarca(id, nombre, pais))){
+            String modelo = txtModelo.getText();
+            int año = Integer.parseInt(txtAño.getText());
+            int kilometraje = Integer.parseInt(txtKilometraje.getText());
+            if ((marca.length()>0) && (modelo.length()>0)&& (año>0)&& (kilometraje>0)){
+                if (marca_dao.modificarMarca(new CMarca(id, marca, modelo, año, kilometraje))){
                     JOptionPane.showMessageDialog(this, "Marca modificada");
                     txtId.setText("");
                     txtMarca.setText("");
                     txtMarca.requestFocus();
-                    cbxPais.setSelectedIndex(0);
+                    txtModelo.setText("");
+                    txtAño.setText("");
+                    txtKilometraje.setText("");
                     for (int i = tbmMarcas.getRowCount()-1; i >=0; i--) {
                         tbmMarcas.removeRow(i);
                     }

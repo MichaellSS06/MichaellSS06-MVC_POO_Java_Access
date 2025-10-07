@@ -74,7 +74,7 @@ public class DAOServicio {
            ps.setInt(3, servicio.getStock());
            ps.setBoolean(4, servicio.isActivo());
            ps.setInt(5, servicio.getMarca().getId());
-           ps.setInt(5, servicio.getId());
+           ps.setInt(6, servicio.getId());
            ps.execute();
            return true;
        } catch (SQLException e) {
