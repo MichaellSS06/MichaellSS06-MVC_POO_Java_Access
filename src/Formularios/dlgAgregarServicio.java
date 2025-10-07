@@ -107,6 +107,8 @@ public class dlgAgregarServicio extends javax.swing.JDialog {
 
         cbxCodigoMarca.setEnabled(false);
 
+        spPrecio.setModel(new javax.swing.SpinnerNumberModel(0.0d, null, null, 0.1d));
+
         jLabel2.setText("Precio:");
 
         jLabel3.setText("Stock");

@@ -1,13 +1,17 @@
 
 package Clases;
+import java.util.Date;
 
 public class CVenta {
     private int id;
-    private String fecha;
+    private Date fecha;
     private CCliente cliente;
     private double total;
 
-    public CVenta(int id, String fecha, CCliente cliente, double total) {
+    public CVenta() {
+    }
+
+    public CVenta(int id, Date fecha, CCliente cliente, double total) {
         this.id = id;
         this.fecha = fecha;
         this.cliente = cliente;
@@ -18,7 +22,7 @@ public class CVenta {
         return id;
     }
 
-    public String getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
@@ -34,7 +38,7 @@ public class CVenta {
         this.id = id;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 

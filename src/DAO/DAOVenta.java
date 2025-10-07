@@ -7,6 +7,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException; 
 import java.util.ArrayList;
 import java.util.List;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class DAOVenta {
     CConexion conexion = new CConexion();
@@ -22,7 +25,7 @@ public class DAOVenta {
             
             while(rs.next()){
                 int id = rs.getInt("id");
-                String fecha = rs.getString("fecha");
+                var fecha = rs.getDate("fecha");
                 int id_cliente = rs.getInt("id_cliente");
                 Double total = rs.getDouble("total");
                 String dni = rs.getString("dni");
@@ -44,11 +47,21 @@ public class DAOVenta {
     
     //
     public boolean agregarVenta(CVenta venta){
-        String sql = "INSERT INTO TVenta (fecha, total, id_marca) "
+        String sql = "INSERT INTO TVenta (fecha, total, id_cliente) "
                 + "VALUES (?,?,?)";
         try {
             ps = conexion.prepararConsulta(sql);
-            ps.setString(1, venta.getFecha());
+            
+            // 1. Crear el objeto SimpleDateFormat con el formato de tu String
+            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+            
+            // 2. Convertir el String a java.util.Date
+            //Date fechaUtil = formato.parse(fechaString);
+            
+            // 3. Convertir java.util.Date a java.sql.Date
+            java.sql.Date fechaSql = new java.sql.Date(venta.getFecha().getTime());
+            
+            ps.setDate(1, fechaSql);
             ps.setDouble(2, venta.getTotal());
             ps.setInt(3, venta.getCliente().getId());
             ps.execute();
@@ -66,10 +79,20 @@ public class DAOVenta {
                + "WHERE Id=?";
        try {
            ps = conexion.prepararConsulta(sql);
-           ps.setString(1, venta.getFecha());
+           
+           // 1. Crear el objeto SimpleDateFormat con el formato de tu String
+            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+            
+           // 2. Convertir el String a java.util.Date
+           //Date fechaUtil = formato.parse(fechaString);
+            
+           // 3. Convertir java.util.Date a java.sql.Date
+           java.sql.Date fechaSql = new java.sql.Date(venta.getFecha().getTime());
+            
+           ps.setDate(1, fechaSql);
            ps.setDouble(2, venta.getTotal());
            ps.setInt(3, venta.getCliente().getId());
-           ps.setInt(5, venta.getId());
+           ps.setInt(4, venta.getId());
            ps.execute();
            return true;
        } catch (SQLException e) {
@@ -79,7 +102,7 @@ public class DAOVenta {
    }
     
     //
-    public boolean eliminarServicio(int id) {
+    public boolean eliminarVenta(int id) {
         String sql = "DELETE FROM TVenta WHERE id = ?";
         try {
             ps = conexion.prepararConsulta(sql);
@@ -91,4 +114,19 @@ public class DAOVenta {
             return false;
         }
     }
+    
+    public boolean actualizarTotalVenta(int idVenta, double montoAgregar) {
+        String sql = "UPDATE TVenta SET total = total + ? WHERE id = ?";
+        try {
+            ps = conexion.prepararConsulta(sql);
+            ps.setDouble(1, montoAgregar);
+            ps.setInt(2, idVenta);
+            int filas = ps.executeUpdate();
+            return filas > 0;
+        } catch (SQLException e) {
+            System.err.println("Error al actualizar total de venta: " + e.getMessage());
+            return false;
+        }
+    }
+
 }

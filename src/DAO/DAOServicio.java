@@ -96,5 +96,28 @@ public class DAOServicio {
             return false;
         }
     }
+    
+    public CServicio obtenerServicio(int id) {
+        String sql = "SELECT * FROM TServicio WHERE id = ?";
+        try {
+            ps = conexion.prepararConsulta(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return new CServicio(
+                    rs.getInt("id"),
+                    rs.getString("nombre"),
+                    new CMarca(),
+                    rs.getDouble("precio"),
+                    rs.getInt("stock"),
+                    rs.getBoolean("activo")
+                );
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al obtener servicio: " + e.getMessage());
+        }
+        return null;
+    }
 
 }

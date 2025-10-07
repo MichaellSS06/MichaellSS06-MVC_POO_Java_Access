@@ -223,7 +223,7 @@ public class dlgModificarMarca extends javax.swing.JDialog {
                 }else
                 JOptionPane.showMessageDialog(this, "Error");
             }else
-            JOptionPane.showMessageDialog(this, "Los campos no pueden ser vac�os");
+            JOptionPane.showMessageDialog(this, "Los campos no pueden ser vacíos");
         }else
         JOptionPane.showMessageDialog(this, "Seleccione una marca");
     }//GEN-LAST:event_btnModificarMouseClicked

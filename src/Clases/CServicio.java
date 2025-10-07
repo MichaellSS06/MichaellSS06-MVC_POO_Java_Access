@@ -9,6 +9,10 @@ public class CServicio {
     private int stock;
     private boolean activo;
 
+    public CServicio() {
+    }
+
+    
     public CServicio(int id, String nombre, CMarca marca, Double precio, int stock, boolean activo) {
         this.id = id;
         this.nombre = nombre;

@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException; 
 import java.util.ArrayList;
 import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class DAOVentaDetalle {
     CConexion conexion = new CConexion();
@@ -16,15 +18,19 @@ public class DAOVentaDetalle {
     public List listaVentasDetalle(){
         List<CVentaDetalle> ventasDetalle = new ArrayList();
         String sql = """
-            SELECT V.*, 
+            SELECT V.*,
                    P.nombre AS nombreServicio, 
-                   precio, 
-                   stock, 
-                   activo,
-                   fecha,
-                   total,
+                   P.precio, 
+                   P.stock, 
+                   P.activo,
+                   T.fecha,
+                   T.total,
+                   M.marca,
+                   M.modelo,
+                   M.año
             FROM TVentaDetalle V
             INNER JOIN TServicio P ON V.id_servicio = P.id
+            INNER JOIN TMarca M ON P.id_marca = M.id
             INNER JOIN TVenta T ON V.id_venta = T.id
         """;
         try {
@@ -41,11 +47,14 @@ public class DAOVentaDetalle {
                 Double precio = rs.getDouble("precio");
                 int stock = rs.getInt("stock");
                 boolean activo = rs.getBoolean("activo");
-                String fecha = rs.getString("fecha");
+                Date fecha = rs.getDate("fecha");
                 Double total = rs.getDouble("total");
+                String marca = rs.getString("marca");
+                String modelo = rs.getString("modelo");
+                int año = rs.getInt("año");
                 ventasDetalle.add(new CVentaDetalle(id,
                         new CVenta(id_venta,fecha,new CCliente(),total),
-                        new CServicio(id_servicio,nombreServicio,new CMarca(),precio, stock, activo),
+                        new CServicio(id_servicio,nombreServicio,new CMarca(0,marca,modelo,año,0),precio, stock, activo),
                         cantidad,precio_unit,subtotal));
             }
         } catch (SQLException e) {
@@ -103,6 +112,29 @@ public class DAOVentaDetalle {
             System.out.println(e.toString());
             return false;
         }
+    }
+    
+    public CVentaDetalle obtenerVentaDetalle(int id) {
+        String sql = "SELECT * FROM TVentaDetalle WHERE id = ?";
+        try {
+            ps = conexion.prepararConsulta(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return new CVentaDetalle(
+                    rs.getInt("id"),
+                    new CVenta(),
+                    new CServicio(),
+                    rs.getInt("cantidad"),
+                    rs.getDouble("precio_unit"),
+                    rs.getDouble("subtotal")
+                );
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al obtener servicio: " + e.getMessage());
+        }
+        return null;
     }
 
 }
