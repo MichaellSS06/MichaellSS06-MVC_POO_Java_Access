@@ -3,7 +3,6 @@ package Formularios;
 
 import Clases.*;
 import DAO.*;
-import java.text.DateFormat;
 
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -22,7 +21,6 @@ public class dlgModificarVentaDetalle extends javax.swing.JDialog {
     DAOVenta venta_dao = new DAOVenta();
     DAOVentaDetalle ventaDetalle_dao = new DAOVentaDetalle();
     DAOServicio servicio_dao = new DAOServicio();
-    String subtotalVariableString;
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(dlgModificarVentaDetalle.class.getName());
 
@@ -154,14 +152,21 @@ public class dlgModificarVentaDetalle extends javax.swing.JDialog {
         btnModificar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Modificar Registro de Venta");
 
         jLabel1.setText("Cantidad:");
 
         spPrecioUni.setModel(new javax.swing.SpinnerNumberModel(0.0d, null, null, 0.1d));
 
+        cbxVenta.setEnabled(false);
         cbxVenta.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cbxVentaItemStateChanged(evt);
+            }
+        });
+        cbxVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxVentaActionPerformed(evt);
             }
         });
 
@@ -260,18 +265,20 @@ public class dlgModificarVentaDetalle extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(cbxCodigoServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(43, 43, 43)
-                                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(cbxVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(btnModificar)
-                                .addGap(43, 43, 43)))))
+                                .addGap(43, 43, 43))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(12, 12, 12)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel5)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(43, 43, 43)
+                                                .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(cbxVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -293,16 +300,12 @@ public class dlgModificarVentaDetalle extends javax.swing.JDialog {
                                     .addComponent(cbxServicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cbxCodigoServicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel1))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(20, 20, 20)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(spPrecioUni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel2)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(29, 29, 29)
-                                        .addComponent(cbxVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(18, 18, 18))
+                                .addGap(20, 20, 20)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(spPrecioUni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2)
+                                    .addComponent(cbxVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(27, 27, 27))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(btnModificar)
@@ -311,7 +314,6 @@ public class dlgModificarVentaDetalle extends javax.swing.JDialog {
                             .addComponent(jLabel5)
                             .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -383,7 +385,8 @@ public class dlgModificarVentaDetalle extends javax.swing.JDialog {
                 CVentaDetalle previaVentaDetalle = ventaDetalle_dao.obtenerVentaDetalle(id);
                 double subtotalAnterior = previaVentaDetalle.getSubtotal()*-1;
                 System.out.println(subtotalAnterior);
-                venta_dao.actualizarTotalVenta(id_venta, subtotalAnterior);
+                boolean pre_actualizado= venta_dao.actualizarTotalVenta(id_venta, subtotalAnterior);
+                System.out.println(pre_actualizado);
                 // 4. Llamar al DAO con el objeto CVenta ya procesado
                     if (ventaDetalle_dao.modificarVentaDetalle(nuevaVentaDetalle)){                  
                         
@@ -442,6 +445,10 @@ public class dlgModificarVentaDetalle extends javax.swing.JDialog {
         spCantidad.setValue(tabVenta.getValueAt(k, 3));
     }//GEN-LAST:event_tabVentaMouseClicked
 
+    private void cbxVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxVentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxVentaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -453,7 +460,7 @@ public class dlgModificarVentaDetalle extends javax.swing.JDialog {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }

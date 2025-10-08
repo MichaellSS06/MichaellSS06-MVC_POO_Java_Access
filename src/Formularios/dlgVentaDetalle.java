@@ -55,6 +55,7 @@ public class dlgVentaDetalle extends javax.swing.JDialog {
         tabVenta = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Lista de Registros de Venta");
 
         tabVenta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -105,7 +106,7 @@ public class dlgVentaDetalle extends javax.swing.JDialog {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }

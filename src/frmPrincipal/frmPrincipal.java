@@ -2,6 +2,7 @@
 package frmPrincipal;
 
 import Formularios.*;
+import Sesion.*;
 
 public class frmPrincipal extends javax.swing.JFrame {
     
@@ -12,6 +13,21 @@ public class frmPrincipal extends javax.swing.JFrame {
      */
     public frmPrincipal() {
         initComponents();
+        controlarAcceso();
+    }
+    
+    private void controlarAcceso() {
+        if (!Sesion.estaLogueado()) {
+            // Bloquea todo si no hay sesión
+            menuMarcas.setEnabled(false);
+            menuServicios.setEnabled(false);
+            menuClientes.setEnabled(false);
+            menuVentas.setEnabled(false);
+            menuDetalleVentas.setEnabled(false);
+        }
+        if (Sesion.estaLogueado()) {
+            menuUsuario.setEnabled(false);
+        }
     }
 
     /**
@@ -23,39 +39,78 @@ public class frmPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu1 = new javax.swing.JMenu();
+        menuUsuario = new javax.swing.JMenu();
+        jMenuItem21 = new javax.swing.JMenuItem();
+        jMenuItem22 = new javax.swing.JMenuItem();
+        menuMarcas = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        menuServicios = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
+        menuClientes = new javax.swing.JMenu();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenuItem11 = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
+        menuVentas = new javax.swing.JMenu();
         jMenuItem13 = new javax.swing.JMenuItem();
         jMenuItem14 = new javax.swing.JMenuItem();
         jMenuItem15 = new javax.swing.JMenuItem();
         jMenuItem16 = new javax.swing.JMenuItem();
-        jMenu6 = new javax.swing.JMenu();
+        menuDetalleVentas = new javax.swing.JMenu();
         jMenuItem17 = new javax.swing.JMenuItem();
         jMenuItem18 = new javax.swing.JMenuItem();
         jMenuItem19 = new javax.swing.JMenuItem();
+        jMenuItem20 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Motor Teknic Automotriz ");
 
-        jMenu3.setText("Usuario");
-        jMenuBar1.add(jMenu3);
+        jLabel1.setBackground(new java.awt.Color(153, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Motor Teknic Automotriz ");
+        jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 51, 51)));
 
-        jMenu1.setText("Marcas");
+        jTextArea1.setEditable(false);
+        jTextArea1.setColumns(20);
+        jTextArea1.setLineWrap(true);
+        jTextArea1.setRows(5);
+        jTextArea1.setText("Somos un taller automotriz especializado en brindar soluciones a nuestros clientes\nNos centramos en ofrecer un servicio de la talla de representante a precios bastante más competitivos.\nConstruimos una relación de confianza con nuestros clientes, transparencia total.\nSI BUSCAS SEGURIDAD, CONFIANZA Y LA MEJOR ATENCION, SOMOS TU MEJOR OPCION.\nNuestras instalaciones cuentan con todas las medidas de seguridad y resguardo.\nContamos con personal altamente capacitado y con todos los equipos necesarios para brindar un servicio integral sin necesidad de recurrir a terceros.\n");
+        jTextArea1.setWrapStyleWord(true);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        menuUsuario.setText("Usuario");
+
+        jMenuItem21.setText("Crear Usuario");
+        jMenuItem21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem21ActionPerformed(evt);
+            }
+        });
+        menuUsuario.add(jMenuItem21);
+
+        jMenuItem22.setText("Iniciar Sesión");
+        jMenuItem22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem22ActionPerformed(evt);
+            }
+        });
+        menuUsuario.add(jMenuItem22);
+
+        jMenuBar1.add(menuUsuario);
+
+        menuMarcas.setText("Marcas");
 
         jMenuItem1.setText("Lista de Marcas");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -63,7 +118,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                 jMenuItem1ActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        menuMarcas.add(jMenuItem1);
 
         jMenuItem3.setText("Agregar Marca");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
@@ -71,7 +126,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                 jMenuItem3ActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem3);
+        menuMarcas.add(jMenuItem3);
 
         jMenuItem4.setText("Modificar Marca");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
@@ -79,7 +134,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                 jMenuItem4ActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem4);
+        menuMarcas.add(jMenuItem4);
 
         jMenuItem5.setText("Eliminar Marca");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
@@ -87,11 +142,11 @@ public class frmPrincipal extends javax.swing.JFrame {
                 jMenuItem5ActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem5);
+        menuMarcas.add(jMenuItem5);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(menuMarcas);
 
-        jMenu2.setText("Servicios");
+        menuServicios.setText("Servicios");
 
         jMenuItem2.setText("Lista de Servicios");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
@@ -99,7 +154,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                 jMenuItem2ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem2);
+        menuServicios.add(jMenuItem2);
 
         jMenuItem6.setText("Agregar Servicio");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
@@ -107,7 +162,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                 jMenuItem6ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem6);
+        menuServicios.add(jMenuItem6);
 
         jMenuItem7.setText("Modificar Servicio");
         jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
@@ -115,7 +170,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                 jMenuItem7ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem7);
+        menuServicios.add(jMenuItem7);
 
         jMenuItem8.setText("Eliminar Servicio");
         jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
@@ -123,11 +178,11 @@ public class frmPrincipal extends javax.swing.JFrame {
                 jMenuItem8ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem8);
+        menuServicios.add(jMenuItem8);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(menuServicios);
 
-        jMenu4.setText("Clientes");
+        menuClientes.setText("Clientes");
 
         jMenuItem9.setText("Lista de Clientes");
         jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
@@ -135,7 +190,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                 jMenuItem9ActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem9);
+        menuClientes.add(jMenuItem9);
 
         jMenuItem10.setText("Agregar Cliente");
         jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
@@ -143,7 +198,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                 jMenuItem10ActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem10);
+        menuClientes.add(jMenuItem10);
 
         jMenuItem11.setText("Modificar Cliente");
         jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
@@ -151,7 +206,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                 jMenuItem11ActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem11);
+        menuClientes.add(jMenuItem11);
 
         jMenuItem12.setText("Eliminar Cliente");
         jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
@@ -159,11 +214,11 @@ public class frmPrincipal extends javax.swing.JFrame {
                 jMenuItem12ActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem12);
+        menuClientes.add(jMenuItem12);
 
-        jMenuBar1.add(jMenu4);
+        jMenuBar1.add(menuClientes);
 
-        jMenu5.setText("Ventas");
+        menuVentas.setText("Ventas");
 
         jMenuItem13.setText("Lista de Ventas");
         jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
@@ -171,7 +226,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                 jMenuItem13ActionPerformed(evt);
             }
         });
-        jMenu5.add(jMenuItem13);
+        menuVentas.add(jMenuItem13);
 
         jMenuItem14.setText("Agregar Venta");
         jMenuItem14.addActionListener(new java.awt.event.ActionListener() {
@@ -179,7 +234,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                 jMenuItem14ActionPerformed(evt);
             }
         });
-        jMenu5.add(jMenuItem14);
+        menuVentas.add(jMenuItem14);
 
         jMenuItem15.setText("Modificar Venta");
         jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
@@ -187,7 +242,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                 jMenuItem15ActionPerformed(evt);
             }
         });
-        jMenu5.add(jMenuItem15);
+        menuVentas.add(jMenuItem15);
 
         jMenuItem16.setText("Eliminar Venta");
         jMenuItem16.addActionListener(new java.awt.event.ActionListener() {
@@ -195,11 +250,11 @@ public class frmPrincipal extends javax.swing.JFrame {
                 jMenuItem16ActionPerformed(evt);
             }
         });
-        jMenu5.add(jMenuItem16);
+        menuVentas.add(jMenuItem16);
 
-        jMenuBar1.add(jMenu5);
+        jMenuBar1.add(menuVentas);
 
-        jMenu6.setText("DetalleVentas");
+        menuDetalleVentas.setText("DetalleVentas");
 
         jMenuItem17.setText("Lista de Registros");
         jMenuItem17.addActionListener(new java.awt.event.ActionListener() {
@@ -207,7 +262,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                 jMenuItem17ActionPerformed(evt);
             }
         });
-        jMenu6.add(jMenuItem17);
+        menuDetalleVentas.add(jMenuItem17);
 
         jMenuItem18.setText("Agregar Registro");
         jMenuItem18.addActionListener(new java.awt.event.ActionListener() {
@@ -215,7 +270,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                 jMenuItem18ActionPerformed(evt);
             }
         });
-        jMenu6.add(jMenuItem18);
+        menuDetalleVentas.add(jMenuItem18);
 
         jMenuItem19.setText("Modificar Registro");
         jMenuItem19.addActionListener(new java.awt.event.ActionListener() {
@@ -223,9 +278,17 @@ public class frmPrincipal extends javax.swing.JFrame {
                 jMenuItem19ActionPerformed(evt);
             }
         });
-        jMenu6.add(jMenuItem19);
+        menuDetalleVentas.add(jMenuItem19);
 
-        jMenuBar1.add(jMenu6);
+        jMenuItem20.setText("Eliminar Registro");
+        jMenuItem20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem20ActionPerformed(evt);
+            }
+        });
+        menuDetalleVentas.add(jMenuItem20);
+
+        jMenuBar1.add(menuDetalleVentas);
 
         setJMenuBar(jMenuBar1);
 
@@ -233,11 +296,21 @@ public class frmPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 377, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
@@ -338,6 +411,22 @@ public class frmPrincipal extends javax.swing.JFrame {
         new dlgModificarVentaDetalle(this,true).setVisible(true);
     }//GEN-LAST:event_jMenuItem19ActionPerformed
 
+    private void jMenuItem20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem20ActionPerformed
+        // TODO add your handling code here:
+        new dlgEliminarVentaDetalle(this,true).setVisible(true);
+    }//GEN-LAST:event_jMenuItem20ActionPerformed
+
+    private void jMenuItem21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem21ActionPerformed
+        // TODO add your handling code here:
+        new dlgAgregarUsuario(this,true).setVisible(true);
+    }//GEN-LAST:event_jMenuItem21ActionPerformed
+
+    private void jMenuItem22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem22ActionPerformed
+        // TODO add your handling code here:
+        dlgLoginUsuario login = new dlgLoginUsuario(this, true);
+        new dlgLoginUsuario(this,true).setVisible(true);
+    }//GEN-LAST:event_jMenuItem22ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -364,12 +453,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
@@ -383,6 +467,9 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem18;
     private javax.swing.JMenuItem jMenuItem19;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem20;
+    private javax.swing.JMenuItem jMenuItem21;
+    private javax.swing.JMenuItem jMenuItem22;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
@@ -390,5 +477,13 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JMenu menuClientes;
+    private javax.swing.JMenu menuDetalleVentas;
+    private javax.swing.JMenu menuMarcas;
+    private javax.swing.JMenu menuServicios;
+    private javax.swing.JMenu menuUsuario;
+    private javax.swing.JMenu menuVentas;
     // End of variables declaration//GEN-END:variables
 }

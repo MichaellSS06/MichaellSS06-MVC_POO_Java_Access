@@ -80,6 +80,7 @@ public class dlgAgregarVenta extends javax.swing.JDialog {
         btnGuardar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Agregar Venta");
 
         tabServicio.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -198,7 +199,7 @@ public class dlgAgregarVenta extends javax.swing.JDialog {
         System.out.println(total);
         int id_cliente = Integer.parseInt(cbxCodigoCliente.getSelectedItem().toString());
 
-        if ((fecha.length()>0) && (total>0)){
+        if ((fecha.length()>0) && (total>=0)){
             try {
             // 1. Convertir el String "dd/MM/yyyy" a java.util.Date
             SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");

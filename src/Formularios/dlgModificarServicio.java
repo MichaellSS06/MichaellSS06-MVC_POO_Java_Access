@@ -79,6 +79,7 @@ public class dlgModificarServicio extends javax.swing.JDialog {
         txtId = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Modificar Servicio");
 
         chkboxActivo.setText("Activo");
         chkboxActivo.addActionListener(new java.awt.event.ActionListener() {
@@ -319,7 +320,7 @@ public class dlgModificarServicio extends javax.swing.JDialog {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }

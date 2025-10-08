@@ -57,6 +57,7 @@ public class dlgServicio extends javax.swing.JDialog {
         tabServicio = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Lista de Servicios");
 
         tabServicio.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

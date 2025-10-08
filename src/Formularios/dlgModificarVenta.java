@@ -82,6 +82,7 @@ public class dlgModificarVenta extends javax.swing.JDialog {
         btnModificar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Modificar Venta");
 
         tabServicio.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -229,7 +230,7 @@ public class dlgModificarVenta extends javax.swing.JDialog {
             System.out.println(total);
             int id_cliente = Integer.parseInt(cbxCodigoCliente.getSelectedItem().toString());
 
-            if ((fecha.length()>0) && (total>0)){
+            if ((fecha.length()>0) && (total>=0)){
                 try {
                 // 1. Convertir el String "dd/MM/yyyy" a java.util.Date
                 SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
@@ -301,7 +302,7 @@ public class dlgModificarVenta extends javax.swing.JDialog {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }

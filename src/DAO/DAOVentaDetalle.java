@@ -92,7 +92,8 @@ public class DAOVentaDetalle {
            ps.setInt(2, ventaDetalle.getServicio().getId());
            ps.setInt(3, ventaDetalle.getCantidad());
            ps.setDouble(4, ventaDetalle.getPrecio_unit());
-           ps.setDouble(4, ventaDetalle.getSubtotal());
+           ps.setDouble(5, ventaDetalle.getSubtotal());
+           ps.setDouble(6, ventaDetalle.getId());
            ps.execute();
            return true;
        } catch (SQLException e) {

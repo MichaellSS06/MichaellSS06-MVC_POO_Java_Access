@@ -21,7 +21,6 @@ public class dlgAgregarVentaDetalle extends javax.swing.JDialog {
     DAOVenta venta_dao = new DAOVenta();
     DAOVentaDetalle ventaDetalle_dao = new DAOVentaDetalle();
     DAOServicio servicio_dao = new DAOServicio();
-    String subtotalVariableString;
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(dlgAgregarVentaDetalle.class.getName());
 
@@ -139,6 +138,7 @@ public class dlgAgregarVentaDetalle extends javax.swing.JDialog {
         txtSubtotal = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Agregar Registros por Venta");
 
         tabVenta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
