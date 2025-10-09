@@ -7,7 +7,7 @@
 /nbproject/private/
 
 # Archivos de empaquetado
-*.jar
+
 *.war
 *.zip
 *.tar.gz
