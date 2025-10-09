@@ -249,22 +249,27 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jScrollPane1" max="32767" attributes="0"/>
-                  <Component id="jLabel1" pref="465" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="560" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" pref="465" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="16" max="32767" attributes="0"/>
+              <EmptySpace pref="18" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" pref="91" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="170" max="-2" attributes="0"/>
               <EmptySpace pref="27" max="32767" attributes="0"/>
           </Group>
@@ -307,7 +312,7 @@
             <Property name="columns" type="int" value="20"/>
             <Property name="lineWrap" type="boolean" value="true"/>
             <Property name="rows" type="int" value="5"/>
-            <Property name="text" type="java.lang.String" value="Somos un taller automotriz especializado en brindar soluciones a nuestros clientes&#xa;Nos centramos en ofrecer un servicio de la talla de representante a precios bastante m&#xe1;s competitivos.&#xa;Construimos una relaci&#xf3;n de confianza con nuestros clientes, transparencia total.&#xa;SI BUSCAS SEGURIDAD, CONFIANZA Y LA MEJOR ATENCION, SOMOS TU MEJOR OPCION.&#xa;Nuestras instalaciones cuentan con todas las medidas de seguridad y resguardo.&#xa;Contamos con personal altamente capacitado y con todos los equipos necesarios para brindar un servicio integral sin necesidad de recurrir a terceros.&#xa;"/>
+            <Property name="text" type="java.lang.String" value="Somos un taller automotriz especializado en brindar soluciones a nuestros clientes.&#xa;Nos centramos en ofrecer un servicio de la talla de representante a precios bastante m&#xe1;s competitivos.&#xa;Construimos una relaci&#xf3;n de confianza con nuestros clientes, transparencia total.&#xa;SI BUSCAS SEGURIDAD, CONFIANZA Y LA MEJOR ATENCION, SOMOS TU MEJOR OPCION.&#xa;Nuestras instalaciones cuentan con todas las medidas de seguridad y resguardo.&#xa;Contamos con personal altamente capacitado y con todos los equipos necesarios para brindar un servicio integral sin necesidad de recurrir a terceros.&#xa;"/>
             <Property name="wrapStyleWord" type="boolean" value="true"/>
           </Properties>
         </Component>

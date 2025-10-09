@@ -86,7 +86,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         jTextArea1.setColumns(20);
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
-        jTextArea1.setText("Somos un taller automotriz especializado en brindar soluciones a nuestros clientes\nNos centramos en ofrecer un servicio de la talla de representante a precios bastante más competitivos.\nConstruimos una relación de confianza con nuestros clientes, transparencia total.\nSI BUSCAS SEGURIDAD, CONFIANZA Y LA MEJOR ATENCION, SOMOS TU MEJOR OPCION.\nNuestras instalaciones cuentan con todas las medidas de seguridad y resguardo.\nContamos con personal altamente capacitado y con todos los equipos necesarios para brindar un servicio integral sin necesidad de recurrir a terceros.\n");
+        jTextArea1.setText("Somos un taller automotriz especializado en brindar soluciones a nuestros clientes.\nNos centramos en ofrecer un servicio de la talla de representante a precios bastante más competitivos.\nConstruimos una relación de confianza con nuestros clientes, transparencia total.\nSI BUSCAS SEGURIDAD, CONFIANZA Y LA MEJOR ATENCION, SOMOS TU MEJOR OPCION.\nNuestras instalaciones cuentan con todas las medidas de seguridad y resguardo.\nContamos con personal altamente capacitado y con todos los equipos necesarios para brindar un servicio integral sin necesidad de recurrir a terceros.\n");
         jTextArea1.setWrapStyleWord(true);
         jScrollPane1.setViewportView(jTextArea1);
 
@@ -297,18 +297,21 @@ public class frmPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addGap(25, 25, 25)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(27, Short.MAX_VALUE))
         );
