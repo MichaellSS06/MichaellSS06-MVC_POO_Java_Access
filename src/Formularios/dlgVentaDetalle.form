@@ -62,7 +62,7 @@
                 <Column editable="false" title="VENTA" type="java.lang.Object"/>
                 <Column editable="false" title="SERVICIO" type="java.lang.Object"/>
                 <Column editable="false" title="CANTIDAD" type="java.lang.Object"/>
-                <Column editable="true" title="PRECIO UNITARIO" type="java.lang.Object"/>
+                <Column editable="false" title="PRECIO UNITARIO" type="java.lang.Object"/>
                 <Column editable="false" title="SUBTOTAL" type="java.lang.Object"/>
               </Table>
             </Property>
